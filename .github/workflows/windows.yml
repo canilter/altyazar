@@ -14,6 +14,10 @@ on:
         description: Android TV APK'sı (tv-android iş akışının çıktısı) uygulamaya gömülsün
         type: boolean
         default: false
+      version:
+        description: Altyazar sürümü (release.yml verir); boşsa etiketten ya da 0.1.0-dev
+        type: string
+        default: ""
 
 env:
   FFMPEG_VERSION: "7.1.2"
@@ -186,7 +190,7 @@ jobs:
       - name: Yayınla
         shell: bash
         run: |
-          if [[ "$GITHUB_REF_TYPE" == tag ]]; then VERSION="${GITHUB_REF_NAME#v}"; else VERSION=0.1.0-dev; fi
+          if [[ -n "${{ inputs.version }}" ]]; then VERSION="${{ inputs.version }}"; elif [[ "$GITHUB_REF_TYPE" == tag ]]; then VERSION="${GITHUB_REF_NAME#v}"; else VERSION=0.1.0-dev; fi
           dotnet publish windows/src/CouchSubs.App -c Release -r win-x64 --self-contained -o publish/CouchSubs -p:Version="$VERSION" \
             -p:CouchSubsPacksUrl=https://couchsubs-packs.enmera.workers.dev
 
@@ -285,11 +289,12 @@ jobs:
       - name: Kurulum dosyası
         shell: pwsh
         run: |
-          $version = if ($env:GITHUB_REF_TYPE -eq "tag") { $env:GITHUB_REF_NAME.TrimStart("v") } else { "0.1.0-dev" }
+          $release = "${{ inputs.version }}"
+          $version = if ($release) { $release } elseif ($env:GITHUB_REF_TYPE -eq "tag") { $env:GITHUB_REF_NAME.TrimStart("v") } else { "0.1.0-dev" }
           Copy-Item -Recurse publish/CouchSubs pack
           Copy-Item LICENSE, THIRD-PARTY-NOTICES.md pack/
           dotnet tool install -g vpk --version 1.2.161
-          if ($env:GITHUB_REF_TYPE -eq "tag") {
+          if ($release -or $env:GITHUB_REF_TYPE -eq "tag") {
             vpk download github --repoUrl https://github.com/canilter/altyazar -o Releases
             if ($LASTEXITCODE -ne 0) { Write-Host "Önceki Velopack sürümü yok; yalnız tam paket üretilecek." }
           }

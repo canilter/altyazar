@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Altyazar sürümü: v* etiketi gönderilince (ya da Actions sekmesinden elle) Windows kurulum dosyasını ve Android TV
+# Altyazar sürümü: release dalına gönderilince (ya da Actions sekmesinden elle) Windows kurulum dosyasını ve Android TV
 # paketini derler, GitHub sürümü olarak yayınlar. Mac, LG ve Samsung paketleri bu çatalda yayınlanmaz.
 # TV_KEYSTORE_* sırları yoksa TV paketi geliştirme anahtarıyla imzalanır; masaüstü uygulaması imzası farklı eski
 # kopyayı kaldırıp yenisini kurar.
@@ -7,7 +7,8 @@ name: release
 
 on:
   push:
-    tags: ["v*"]
+    branches: [release]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,6 +25,8 @@ jobs:
     uses: ./.github/workflows/windows.yml
     with:
       with-android: true
+      # Her yayın bir öncekinden büyük olsun: uygulama içi güncelleme bu numarayı karşılaştırır.
+      version: 1.0.${{ github.run_number }}
 
   publish:
     runs-on: ubuntu-latest
@@ -47,5 +50,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" out/* --title "Altyazar ${GITHUB_REF_NAME#v}" \
+          VERSION="1.0.${{ github.run_number }}"
+          gh release create "v$VERSION" out/* --target "$GITHUB_SHA" --title "Altyazar $VERSION" \
             --notes "Windows: Altyazar-windows-Setup.exe dosyasını indirip açın. Google TV paketi kurulumda otomatik yüklenir." --latest
