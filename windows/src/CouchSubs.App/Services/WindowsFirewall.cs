@@ -140,7 +140,7 @@ internal sealed class WindowsFirewall : IFirewall
         private static void SetRule(dynamic rule, FirewallRule spec)
         {
             rule.Name = spec.Name;
-            rule.Description = "CouchSubs: TV and Remote Play on the private local network.";
+            rule.Description = "Altyazar (CouchSubs): TV and Remote Play on the private local network.";
             rule.Grouping = spec.Grouping;
             rule.ApplicationName = spec.Program;
             rule.Protocol = spec.Protocol; // Portlar protokolden sonra atanmalı (INetFwRule).

@@ -20,7 +20,8 @@ namespace CouchSubs.Core;
 /// </remarks>
 public sealed class TranslationCache
 {
-    public const int DefaultLimit = 20_000;
+    // Altyazar: GTA 6 gibi büyük oyunların bütün satırları kalsın diye 20 binden 200 bine çıkarıldı.
+    public const int DefaultLimit = 200_000;
     /// <summary>Dosya adındaki biçim sürümü: çeviri öncesi temizlik kuralları değişince eski çeviriler bırakılabilsin.</summary>
     public const int FormatVersion = 1;
 

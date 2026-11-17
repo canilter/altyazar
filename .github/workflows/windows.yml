@@ -290,15 +290,15 @@ jobs:
           Copy-Item LICENSE, THIRD-PARTY-NOTICES.md pack/
           dotnet tool install -g vpk --version 1.2.161
           if ($env:GITHUB_REF_TYPE -eq "tag") {
-            vpk download github --repoUrl https://github.com/yorulmazsinan/couchsubs -o Releases
+            vpk download github --repoUrl https://github.com/canilter/altyazar -o Releases
             if ($LASTEXITCODE -ne 0) { Write-Host "Önceki Velopack sürümü yok; yalnız tam paket üretilecek." }
           }
           # --framework webview2: PlayStation giriş penceresi WebView2 ister; eksik bilgisayarlarda kurulum onu da kurar.
-          vpk pack --packId CouchSubsApp --packVersion $version --packDir pack --mainExe CouchSubs.exe --framework webview2 `
-            --packTitle CouchSubs --packAuthors Enmera --icon windows/src/CouchSubs.App/Assets/CouchSubs.ico --outputDir Releases
+          vpk pack --packId AltyazarApp --packVersion $version --packDir pack --mainExe CouchSubs.exe --framework webview2 `
+            --packTitle Altyazar --packAuthors canilter --icon windows/src/CouchSubs.App/Assets/CouchSubs.ico --outputDir Releases
           if ($LASTEXITCODE -ne 0) { throw "vpk pack başarısız" }
           New-Item -ItemType Directory installer | Out-Null
-          Move-Item Releases/CouchSubsApp-win-Setup.exe installer/CouchSubs-windows-Setup.exe
+          Move-Item Releases/AltyazarApp-win-Setup.exe installer/Altyazar-windows-Setup.exe
           # Bu sürümün güncelleme dosyaları; önceki sürümden indirilen paketler sürüme yeniden eklenmez.
           Get-ChildItem Releases -File |
             Where-Object { ($_.Name -like "*$version*" -or $_.Name -like "releases.*.json" -or $_.Name -like "assets.*.json" -or $_.Name -eq "RELEASES") -and $_.Name -notlike "*Portable*" } |

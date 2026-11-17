@@ -6,9 +6,9 @@
   var TEXTS = {
     tr: {
       // Telefondan kuranların çoğunun bilgisayarı yoktur: önce telefon söylenir (#113).
-      waiting: 'Telefonda (ya da bilgisayarda) CouchSubs\'ı açıp Çeviriyi başlat\'a basın.',
-      waitingHint: 'Bilgisayar gerekmez. Altyazı hedefi TV olsun, telefon ve TV aynı Wi-Fi\'da olsun: CouchSubs bu TV\'yi bulup altyazıları buraya gönderir.',
-      panelTitle: 'CouchSubs',
+      waiting: 'Telefonda (ya da bilgisayarda) Altyazar\'ı açıp Çeviriyi başlat\'a basın.',
+      waitingHint: 'Bilgisayar gerekmez. Altyazı hedefi TV olsun, telefon ve TV aynı Wi-Fi\'da olsun: Altyazar bu TV\'yi bulup altyazıları buraya gönderir.',
+      panelTitle: 'Altyazar',
       hdmi: 'HDMI',
       lastSubtitle: 'Son altyazı',
       diagnostics: 'Tanı',
@@ -39,14 +39,14 @@
       noPicture: 'HDMI %1 girişinden görüntü gelmiyor.',
       noPictureError: 'HDMI %1 girişi bu uygulamada açılamadı.',
       noPictureChoose: 'PS5 başka girişe bağlıysa aşağıdan seçin (◀▶ ve Tamam, ya da 1–4 sayı tuşları).',
-      noPictureStillBlack: 'Doğru girişte de siyah mı? PS5\'te HDR açıksa kapatın (Ayarlar › Ekran ve Video › Video Çıkışı › HDR: Kapalı): Uzaktan Oynatma açıkken HDR görüntü kararabiliyor. Olmazsa bu TV HDMI görüntüsünü uygulamalara vermiyor ya da HDCP engelliyordur: PS5\'te Ayarlar › Sistem › HDMI › HDCP\'yi Etkinleştir\'i kapatmayı deneyin. Olmazsa CouchSubs\'tan çıkın, TV\'yi kumandadan PS5\'in HDMI girişine alın ve altyazıyı telefon ya da bilgisayar ekranından izleyin.',
+      noPictureStillBlack: 'Doğru girişte de siyah mı? PS5\'te HDR açıksa kapatın (Ayarlar › Ekran ve Video › Video Çıkışı › HDR: Kapalı): Uzaktan Oynatma açıkken HDR görüntü kararabiliyor. Olmazsa bu TV HDMI görüntüsünü uygulamalara vermiyor ya da HDCP engelliyordur: PS5\'te Ayarlar › Sistem › HDMI › HDCP\'yi Etkinleştir\'i kapatmayı deneyin. Olmazsa Altyazar\'dan çıkın, TV\'yi kumandadan PS5\'in HDMI girişine alın ve altyazıyı telefon ya da bilgisayar ekranından izleyin.',
       noPictureExit: 'Çık, TV girişine dön',
       noPictureClose: 'Kapat'
     },
     en: {
-      waiting: 'Open CouchSubs on your phone (or computer) and start translating.',
-      waitingHint: 'No computer needed. Set the subtitle target to TV and keep the phone and TV on the same Wi-Fi: CouchSubs finds this TV and sends subtitles here.',
-      panelTitle: 'CouchSubs',
+      waiting: 'Open Altyazar on your phone (or computer) and start translating.',
+      waitingHint: 'No computer needed. Set the subtitle target to TV and keep the phone and TV on the same Wi-Fi: Altyazar finds this TV and sends subtitles here.',
+      panelTitle: 'Altyazar',
       hdmi: 'HDMI',
       lastSubtitle: 'Last subtitle',
       diagnostics: 'Diagnostics',
@@ -77,7 +77,7 @@
       noPicture: 'No picture from HDMI %1.',
       noPictureError: 'HDMI %1 could not be opened in this app.',
       noPictureChoose: 'If the PS5 is on another input, choose it below (◀▶ and OK, or number keys 1–4).',
-      noPictureStillBlack: 'Still black on the right input? If HDR is on, turn it off on the PS5 (Settings › Screen and Video › Video Output › HDR: Off): with Remote Play active an HDR picture can turn dark. Otherwise this TV may not hand its HDMI picture to apps, or HDCP blocks it: try turning off Settings › System › HDMI › Enable HDCP on the PS5. Otherwise exit CouchSubs, switch the TV to the PS5\'s HDMI input with the remote and read the subtitles on your phone or computer.',
+      noPictureStillBlack: 'Still black on the right input? If HDR is on, turn it off on the PS5 (Settings › Screen and Video › Video Output › HDR: Off): with Remote Play active an HDR picture can turn dark. Otherwise this TV may not hand its HDMI picture to apps, or HDCP blocks it: try turning off Settings › System › HDMI › Enable HDCP on the PS5. Otherwise exit Altyazar, switch the TV to the PS5\'s HDMI input with the remote and read the subtitles on your phone or computer.',
       noPictureExit: 'Exit to the TV input',
       noPictureClose: 'Close'
     }

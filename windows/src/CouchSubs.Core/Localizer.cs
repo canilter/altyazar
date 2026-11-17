@@ -24,8 +24,8 @@ public sealed class Localizer
 
     public string Language => language;
 
-    public string this[string key] =>
-        Catalog.Value.TryGetValue(key, out var values) && values.TryGetValue(language, out var value) ? value : key;
+    public string this[string key] => Branding.Apply(
+        Catalog.Value.TryGetValue(key, out var values) && values.TryGetValue(language, out var value) ? value : key);
 
     /// <summary>xcstrings biçim belirteçlerini (%@, %lld, %1$@ …) verilen değerlerle doldurur.</summary>
     public string Format(string key, params object[] args) => Fill(this[key], args);

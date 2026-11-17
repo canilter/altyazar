@@ -68,7 +68,7 @@ public sealed partial class SubtitleOverlayWindow : Window
         ShowInTaskbar = false;
         ShowActivated = false;
         Focusable = false;
-        Title = "CouchSubs";
+        Title = CouchSubs.Core.Branding.Name;
 
         var root = new Grid();
         root.Children.Add(adjustLayer);

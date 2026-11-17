@@ -48,11 +48,11 @@ internal static class StartupGuard
     {
         var list = string.Join("\n", files.Take(8).Select(f => "  • " + f)) + (files.Count > 8 ? "\n  • …" : "");
         return Turkish
-            ? $"CouchSubs açılamadı: program klasöründe şu dosyalar yok:\n\n{list}\n\n" +
+            ? $"Altyazar açılamadı: program klasöründe şu dosyalar yok:\n\n{list}\n\n" +
               "Bunun en sık nedeni antivirüs programının dosyayı karantinaya almasıdır. Windows Güvenliği › Virüs ve tehdit " +
               "koruması › Koruma geçmişi'nden dosyayı geri yükleyin ya da CouchSubs-windows-x64.zip'i yeniden indirip " +
               "\"Tümünü ayıkla\" ile bir klasöre çıkarın. Programı zip'in içinden çalıştırmayın."
-            : $"CouchSubs could not start: these files are missing from its folder:\n\n{list}\n\n" +
+            : $"Altyazar could not start: these files are missing from its folder:\n\n{list}\n\n" +
               "This usually means an antivirus moved them to quarantine. Restore them from Windows Security › Virus & threat " +
               "protection › Protection history, or download CouchSubs-windows-x64.zip again and use \"Extract all\". " +
               "Do not run the app from inside the zip.";
@@ -60,8 +60,8 @@ internal static class StartupGuard
 
     public static string ErrorMessage(Exception error) =>
         (Turkish
-            ? "CouchSubs beklenmeyen bir hatayla karşılaştı:\n\n"
-            : "CouchSubs ran into an unexpected error:\n\n") +
+            ? "Altyazar beklenmeyen bir hatayla karşılaştı:\n\n"
+            : "Altyazar ran into an unexpected error:\n\n") +
         $"{error.GetType().Name}: {error.Message}\n\n" +
         (Turkish
             ? $"Ayrıntılar {LogPath} dosyasında. Sorunu bu dosyayla birlikte GitHub'daki Issues sayfasından bildirebilirsiniz."
@@ -73,7 +73,7 @@ internal static class StartupGuard
         Log(message, error);
         if (renderFolder is null)
         {
-            MessageBox.Show(message, "CouchSubs", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(message, "Altyazar", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         else
         {
@@ -87,9 +87,9 @@ internal static class StartupGuard
     public static string OverlayFailedMessage(Exception error) =>
         (Turkish
             ? "Bilgisayar ekranındaki altyazı penceresi açılamadı. Çeviri sürüyor ama altyazılar bu pencerede görünmeyecek; " +
-              "CouchSubs'ı yeniden açınca pencere yeniden denenir.\n\n"
+              "Altyazar'ı yeniden açınca pencere yeniden denenir.\n\n"
             : "The subtitle window on this computer's screen could not be shown. Translation continues, but subtitles won't " +
-              "appear in that window until you reopen CouchSubs.\n\n") +
+              "appear in that window until you reopen Altyazar.\n\n") +
         $"{error.GetType().Name}: {error.Message}\n\n" +
         (Turkish
             ? $"Ayrıntılar {LogPath} dosyasında. Sorunu bu dosyayla birlikte GitHub'daki Issues sayfasından bildirebilirsiniz."
@@ -98,8 +98,8 @@ internal static class StartupGuard
     /// <summary>Arka plandaki bir hata uygulamayı kapatıyor; hiç değilse nedeni görünsün.</summary>
     static string ClosingMessage(Exception? error) =>
         (Turkish
-            ? "CouchSubs bir hata yüzünden kapanmak zorunda kaldı:\n\n"
-            : "CouchSubs has to close because of an error:\n\n") +
+            ? "Altyazar bir hata yüzünden kapanmak zorunda kaldı:\n\n"
+            : "Altyazar has to close because of an error:\n\n") +
         (error is null ? "" : $"{error.GetType().Name}: {error.Message}\n\n") +
         (Turkish
             ? $"Ayrıntılar {LogPath} dosyasında. Sorunu bu dosyayla birlikte GitHub'daki Issues sayfasından bildirebilirsiniz."
@@ -176,7 +176,7 @@ internal static class StartupGuard
     {
         try
         {
-            MessageBox.Show(message, "CouchSubs", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(message, "Altyazar", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         catch (Exception error)
         {

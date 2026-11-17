@@ -45,6 +45,7 @@ public static class AiRequest
     {
         var parts = new List<string>();
         if (!string.IsNullOrEmpty(game)) parts.Add($"Game: {game}");
+        if (GameNotes.For(game) is { } notes) parts.Add(notes);
         if (context.Count > 0)
         {
             var lines = new List<string> { "Previous subtitles, for context only (do not translate them again):" };
